@@ -1,0 +1,36 @@
+<%- include ("_layouts/header.ejs") %>
+</section>
+<section class="categories">
+    <div class="navigation">
+        <% categories.forEach(function(cat){%>
+        <div id="<%=cat.title%>" class="navigation-item">
+            <div class="navigation-item-icon"><img src="images/discount-<%=cat.title.toLowerCase()%>-icon.svg" width="55px" height="55px"></div>
+            <h4 class="navigation-item-headline"><%= cat.title%></h4>
+        </div>
+        <% })%>
+        <div id="All" class="navigation-item">
+            <div class="navigation-item-icon"><img src="images/logo.svg" width="55px" height="55px"></div>
+            <h4 class="navigation-item-headline">All</h4>
+        </div>
+    </div>
+</section>
+<section class="products">
+    <div id="block">
+        <% products.forEach(function(prod){ %>
+        <div class="un <%=prod.category%>">
+            <a href="category/<%=prod.slug%>">
+            <% if (prod.image=="") {%>
+                <img src="images/noimage.png" width="194px" height="194px" class="button-prod"/>
+            <% } else { %>
+            <img src="product_images/<%= prod._id %>/<%= prod.image %>" width="194px" height="194px" class="button-prod"/>
+            <% }%>
+            </a>
+            <h3><%= prod.title %></h3>
+            <p>$<%= prod.price %></p>
+            <br>
+            <a href="cart/add/<%=prod.slug%>">To basket</a>
+        </div>
+        <% }) %>
+    </div>
+</section>
+<%- include ("_layouts/footer.ejs") %> 

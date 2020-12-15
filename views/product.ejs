@@ -1,0 +1,18 @@
+<%- include ("_layouts/prodheader.ejs") %>
+</section>
+<section class="product">
+   <div class="block">
+       <h1><%=title%></h1>
+       <div class="about-prod">
+        <div class="left">
+        <img src="/product_images/<%=id%>/<%=image%>">
+        </div>
+        <div class="rigth">
+            <p class="text"><%=desc%></p>
+        </div>
+       </div>
+       <h1 class="price">$<%=price%></h1>
+       <h1 class="category"><%=category%></h1>
+   </div>
+</section>
+<%- include ("_layouts/prodfooter.ejs") %> 

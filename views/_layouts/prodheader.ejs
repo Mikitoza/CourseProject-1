@@ -1,0 +1,46 @@
+
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%=title%></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styleproduct.css">
+    <link rel="stylesheet" href="/css/reset.css">
+  </head>
+ <body>
+  <section class="main">
+    <header>
+        <div class="header-section">
+            <a href="/" class="header-logo-link">
+                <p><img src="/images/logo.svg" height="25px" width="25px">Nikitoza shop</p>
+            </a>
+            <nav class="nav-links">
+                <ul class="menu">
+                    <li class="menu-item"><a href="/category" class="menu-link">categories</a></li>
+                    <li class="menu-item"><a href="/feedback" class="menu-link">feedback</a></li>
+                    <li class="menu-item"><a href="/about-us" class="menu-link">about us</a></li>
+                    <% if (user) { %>
+                        <li class="menu-item"><a href="/users/logout" class="menu-link">Hi, <%= user.username %> ( logout )</a></li>
+                        <% } else {%>
+                        <li class="menu-item"><a href="/users/register" class="menu-link">Register</a></li>
+                        <li class="menu-item"><a href="/users/login" class="menu-link">Log in</a></li>
+                        <% } %>
+                        <% if (user && user.admin == 1) { %>
+                        <li class="menu-item"><a href="/admin/pages" class="menu-link">Admin Area</a></li>
+                        <% }%>
+                        <li><button class="btn btn-primary" id="myBtn" class="btn btn-primary">basket (
+                        <% if(typeof cart!== "undefined") {%>
+                        <%= cart.length %>
+                        <%} else {%>
+                            0
+                        <% } %>
+                    )</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<%- messages('messages', locals) %>

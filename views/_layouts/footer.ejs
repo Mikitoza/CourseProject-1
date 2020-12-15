@@ -1,0 +1,64 @@
+<section class="footer">
+    <div class="footer-section">
+        <div class="footer-headline">
+            <h3 class="headline-h3">shop</h3>
+        </div>
+        <nav class="nav-links">
+            <ul class="menu">
+                <li class="menu-item"><a href="/home" class="menu-link">Home</a></li>
+                <li class="menu-item"><a href="/category" class="menu-link">categories</a></li>
+                <li class="menu-item"><a href="/feedbacks" class="menu-link">feedback</a></li>
+                <li class="menu-item"><a href="/about-us" class="menu-link">about us</a></li>
+            </ul>
+        </nav>
+        <div class="social-links">
+            <li class="social-item"><a href="#" class="social-link"><img src="images/instagram-icon.svg" alt=""></a></li>
+            <li class="social-item"><a href="#" class="social-link"><img src="images/facebook-icon.svg" alt=""></a></li>
+            <li class="social-item"><a href="#" class="social-link"><img src="images/linkedin-icon.svg" alt=""></a></li>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Корзина</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <%var totalcost = 0.0%>
+                <%if (typeof cart =="undefined") {%> 
+                    <h5>Пусто</h5>
+                <% } else {%>
+                    <% cart.forEach(function(p){ %>
+                        <div id="object" class="modal-body"> 
+                        <%totalcost += parseFloat(p.price) * parseFloat(p.qty) %>
+                        <%console.log(totalcost)%>
+                        <div>
+                        <div class="line">  
+                             <span id="name"><%=p.title%></span>
+                             <span id="qty"><%=p.title%></span>
+                            <span id="cost">$<%= p.price %></span>
+                         </div>	
+                        </div>
+                    </div>
+                    <hr size=3px width=500px >
+                <% })%>
+                <% } %>
+           <p id="total">Итог $<%=totalcost%></p>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary btn-warning" id="BuyCart">Оплатить</button>
+                <button class="btn btn-outline-secondary btn-warning" id="DeleteCart"><img src="images/icon.svg"></button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+<script src="js/<%=title %>.js"></script>
+</body>
+</html>

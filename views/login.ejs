@@ -1,0 +1,29 @@
+<%- include ("_layouts/header.ejs") %>
+<%- messages('messages', locals) %>
+
+<% if(errors){ %>
+  <% errors.forEach(function(error){ %>
+    <div class="alert alert-danger">
+      <%= error.msg %>
+    </div>
+ <% }); %>
+<% } %>
+
+<section class="send">
+    <h3 class="headline">Login</h3>
+    <form method="post" action="/users/login" class="send-form">
+        <div>
+            <label>Username</label>
+            <input type="text" name="username" class="Username"  placeholder="Username">
+        </div>
+    
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" class="Username"   placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+</section>
+
+
+<%- include ("_layouts/footer.ejs") %>
